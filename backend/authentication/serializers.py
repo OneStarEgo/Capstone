@@ -3,6 +3,8 @@ from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
 from .models import User
+from .models import Pet
+from .models import Services
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -31,7 +33,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
         # If added new columns through the User model, add them in the fields
         # list as seen below
         fields = ('username', 'password', 'email',
-                  'first_name', 'last_name',)
+                  'first_name', 'last_name','address',
+                   'city', 'state', 'zip_code', 'phone_number')
 
     def create(self, validated_data):
 
@@ -40,6 +43,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
+            address=validated_data['address'],
+            city=validated_data['city'],
+            state=validated_data['state'],
+            zip_code=validated_data['zip_code'],
+            phone_number=validated_data['phone_number'],
 
             # If added new columns through the User model, add them in this
             # create method. Example below:
@@ -50,3 +58,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+class PetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Pet
+        fields = ('name', 'age,', 'temperament')
+
+class ServicesSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('user_id', 'pet_id', 'pet_name', 'start_date', 'end_date')
