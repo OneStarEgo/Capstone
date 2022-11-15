@@ -66,4 +66,5 @@ class PetSerializer(serializers.ModelSerializer):
 
 class ServicesSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('user_id', 'pet_id', 'pet_name', 'start_date', 'end_date')
+        model = Services
+        fields = ('user_id', 'pet_name', 'start_date', 'end_date')
