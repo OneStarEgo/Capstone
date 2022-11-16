@@ -3,9 +3,6 @@ from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
 from .models import User
-from .models import Pet
-from .models import Services
-
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -58,13 +55,3 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
-
-class PetSerializer(serializers.ModelSerializer):
-    class Meta:
-        model= Pet
-        fields = ('name', 'age,', 'temperament')
-
-class ServicesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Services
-        fields = ('user_id', 'pet_name', 'start_date', 'end_date')

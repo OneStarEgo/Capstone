@@ -1,5 +1,5 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.db import models;
+from django.contrib.auth.models import AbstractUser;
 
 
 class User(AbstractUser):
@@ -19,16 +19,3 @@ class User(AbstractUser):
     state= models.CharField(max_length=255, default='DEFAULT VALUE')
     zip_code= models.IntegerField(default='0')
     phone_number= models.IntegerField(default='0')
-
-
-class Pet(models.Model):
-    name= models.CharField(max_length=255)
-    age= models.IntegerField()
-    temperament= models.CharField(max_length=255)
-
-class Services(models.Model):
-    user_id= models.ForeignKey(User, on_delete=models.CASCADE)
-    pet_name= models.ForeignKey(Pet, on_delete=models.CASCADE)
-    start_date= models.DateField(null=True, blank=True)
-    end_date= models.DateField(null=True, blank=True)
-
