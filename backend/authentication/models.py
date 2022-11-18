@@ -17,5 +17,5 @@ class User(AbstractUser):
     address= models.CharField(max_length=255, default='DEFAULT VALUE')
     city= models.CharField(max_length=255, default='DEFAULT VALUE')
     state= models.CharField(max_length=255, default='DEFAULT VALUE')
-    zip_code= models.IntegerField(default='0')
-    phone_number= models.IntegerField(default='0')
+    zip_code= models.IntegerField(default=0)
+    phone_number= models.IntegerField(default=0)
