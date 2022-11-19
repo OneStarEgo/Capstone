@@ -20,10 +20,10 @@ def dog_list(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def users_pet(request, pk):
-    song = get_object_or_404(Pet, pk=pk)
+def users_pet(request, user_id):
+    pet = Pet.objects.filter(user_id=user_id)
     if request.method == 'GET':
-        serializer = PetSerializer(pet)
+        serializer = PetSerializer(pet, many=True)
         return Response(serializer.data)
     elif request.method == 'PUT':
         serializer = PetSerializer(pet, data=request.data)

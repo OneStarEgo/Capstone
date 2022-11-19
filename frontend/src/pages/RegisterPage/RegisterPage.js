@@ -6,10 +6,15 @@ const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
     username: "",
-    email: "",
-    password: "",
     firstName: "",
     lastName: "",
+    email: "",
+    password: "",
+    address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    phone_number: "",
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
@@ -68,6 +73,51 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>
+        <label>
+          Address:{" "}
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          City:{" "}
+          <input
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          State:{" "}
+          <input
+            type="text"
+            name="state"
+            value={formData.state}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Zip Code:{" "}
+          <input
+            type="text"
+            name="zip_code"
+            value={formData.zip_code}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Phone Number:{" "}
+          <input
+            type="text"
+            name="phone_number"
+            value={formData.phone_number}
+            onChange={handleInputChange}
+          />
+        </label>
         <button>Register!</button>
       </form>
     </div>
