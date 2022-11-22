@@ -40,11 +40,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
             email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
-            address=validated_data['address'],
-            city=validated_data['city'],
-            state=validated_data['state'],
-            zip_code=validated_data['zip_code'],
-            phone_number=validated_data['phone_number'],
+            address=['address'],
+            city=['city'],
+            state=['state'],
+            zip_code=0,
+            phone_number=0,
 
             # If added new columns through the User model, add them in this
             # create method. Example below:
