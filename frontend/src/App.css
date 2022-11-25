@@ -56,3 +56,64 @@ button:hover {
   padding: 3px 7px;
   font-size: 17px;
 }
+
+body, html {
+  height: 100%;
+}
+
+.hero-image {
+background-image: linear-gradient(45deg,
+  rgba(0, 0, 0, 0.5),
+  rgba(0, 0, 0, 0.5)),
+url("https://www.shutterstock.com/image-photo/australian-shepherd-attentive-260nw-740843314.jpg");
+height: 400px;
+width: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+}
+
+.hero-text {
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+}
+
+.au {
+  position: relative;
+  font-size: larger;
+}
+
+.cu {
+  position: relative;
+  font-size: larger;
+}
+
+.about-us {
+  background-color: indigo;
+}
+
+.section-a {
+  position: relative;
+  left: 60px;
+}
+
+.a-padding {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.paragraph-1 {
+  float: left;
+  width: 50%;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.paragraph-2 {
+  flex-wrap: wrap;
+}

@@ -10,7 +10,6 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-import HeroImage from "./components/Hero_Image/HeroImage";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -19,7 +18,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <HeroImage />
       <Routes>
         <Route
           path="/"
