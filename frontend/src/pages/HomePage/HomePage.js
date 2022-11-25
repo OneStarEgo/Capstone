@@ -3,8 +3,8 @@ import React from "react";
 const HomePage = () => {
   return (
     <div className='homepage'>
-      <div className="hero-image">
-        <div className='hero-text'>
+      <div className="hero-image1">
+        <div className='hero-text1'>
           <h1>Elite Dog Training</h1>
           <div className="au">
             <a href="about-us">About Us</a>
@@ -16,7 +16,7 @@ const HomePage = () => {
       </div>
       <div className="about-us">
         <div className="a-padding">
-            <h2 className="section-a">About Us</h2>
+            <h2 className="sect-title-a">Mission Statement</h2>
             <p className="paragraph-1">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Volutpat odio facilisis mauris sit.
@@ -31,13 +31,8 @@ const HomePage = () => {
               Eget aliquet nibh praesent tristique.
               Arcu bibendum at varius vel pharetra.
               Amet mauris commodo quis imperdiet.
-              Vitae semper quis lectus nulla at.
-              Ut pharetra sit amet aliquam id diam maecenas ultricies.
-              At tempor commodo ullamcorper a lacus vestibulum.
-              In arcu cursus euismod quis viverra nibh cras pulvinar.
-              Eros donec ac odio tempor. Arcu vitae elementum curabitur vitae.
             </p>
-          <br />
+          <h2 className="sect-title-b">Facility Info</h2>
           <p className="paragraph-2">Nunc pulvinar sapien et ligula ullamcorper malesuada. 
           Suscipit adipiscing bibendum est ultricies integer quis auctor elit.
           Elementum nisi quis eleifend quam. Maecenas accumsan lacus vel facilisis.
@@ -56,7 +51,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="contact-us">
-        <h2>Contact Us</h2>
+        <h2 className="sect-title-c">Contact Us</h2>
       </div>
     </div>
   );

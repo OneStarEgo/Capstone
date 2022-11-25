@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
+/*Register & Login CSS*/
 *,
 *::before,
 *::after {
@@ -61,26 +62,28 @@ body, html {
   height: 100%;
 }
 
-.hero-image {
-background-image: linear-gradient(45deg,
+/*Homepage CSS*/
+.hero-image1 {
+  background-image: linear-gradient(45deg,
   rgba(0, 0, 0, 0.5),
   rgba(0, 0, 0, 0.5)),
-url("https://www.shutterstock.com/image-photo/australian-shepherd-attentive-260nw-740843314.jpg");
-height: 400px;
-width: 100%;
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-position: relative;
+  url("https://www.shutterstock.com/image-photo/australian-shepherd-attentive-260nw-740843314.jpg");
+  height: 400px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-.hero-text {
-text-align: center;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-color: white;
+
+.hero-text1 {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
 .au {
@@ -97,14 +100,23 @@ color: white;
   background-color: indigo;
 }
 
-.section-a {
+.sect-title-a {
   position: relative;
-  left: 60px;
+  left: 120px;
+  color: white;
+  
+}
+
+.sect-title-b {
+  position: relative;
+  bottom: 35px;
+  right: -140px;
+  color: white;
 }
 
 .a-padding {
   padding-left: 100px;
-  padding-right: 100px;
+  padding-right: 90px;
 }
 
 .paragraph-1 {
@@ -112,8 +124,32 @@ color: white;
   width: 50%;
   padding: 20px;
   flex-wrap: wrap;
+  color: white;
 }
 
 .paragraph-2 {
   flex-wrap: wrap;
+  position: relative;
+  bottom: 17px;
+  color: white;
 }
+
+.sect-title-c {
+  position: relative;
+  right: 80px;
+}
+
+/*Services Page CSS*/
+.hero-image2 {
+  background-image: linear-gradient(45deg,
+  rgba(0, 0, 0, 0.5),
+  rgba(0, 0, 0, 0.5)),
+  url("https://images.pexels.com/photos/264005/pexels-photo-264005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  height: 400px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
