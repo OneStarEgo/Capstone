@@ -153,3 +153,32 @@ body, html {
   position: relative;
 }
 
+.training-img {
+  position: relative;
+  top: 230px;
+  left: 150px;
+}
+
+.training-link {
+  position: relative;
+}
+
+.grooming-img {
+  position: relative;
+  top: 230px;
+  left: 350px;
+}
+
+.grooming-link {
+  position: relative;
+}
+
+.facility-img {
+  position: relative;
+  top: 230px;
+  left: 550px;
+}
+
+.facility-link {
+  position: relative;
+}
