@@ -29,17 +29,46 @@ const ServicesPage = () => {
                         Eget dolor morbi non arcu.
                         Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget.
                     </p>
+                    <div>
+                        <a className="sched-button" href="/schedule">
+                            <button>Schedule</button>
+                        </a>
+                    </div>
                 </div>
             </div>
 
 
             <div className="grooming-sect">
                 <h2>Grooming</h2>
+                <div className="">
+                    <img className="grooming-sect-thumb1" src="https://cdn.pixabay.com/photo/2022/11/02/17/37/dog-7565648__340.jpg" alt="Dog being groomed" width="160" height="145"></img>
+                    <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Eget dolor morbi non arcu.
+                        Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget.
+                    </p>
+                    <img className="grooming-sect-thumb2" src="https://cbs12.com/resources/media/e7c93ddc-3bc2-4068-82a8-ad2128fc60e3-largeScale_smallbiz1.jpg?1596017292256" alt="Dog being dried off" width="160" height="145"></img>
+                    <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Eget dolor morbi non arcu.
+                        Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget.
+                    </p>
+                </div>
             </div>
 
 
             <div className="facility-sect">
                 <h2>Facilities</h2>
+                <div className="">
+                    <img className="facility-sect-thumb1" src="https://pawleaks.com/wp-content/uploads/2021/05/dog-boarding-kennel.jpg" alt="Kennels where dogs are kept" width="160" height="145"></img>
+                    <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Eget dolor morbi non arcu.
+                        Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget.
+                    </p>
+                    <img className="facility-sect-thumb2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROTIGy0UKAje9pVEQAx_8jQIy8jKB7FpHaYA&usqp=CAU" alt="Dog training area" width="160" height="145"></img>
+                    <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Eget dolor morbi non arcu.
+                        Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget.
+                    </p>
+                </div>
             </div>
         </div>
     )

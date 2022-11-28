@@ -197,18 +197,18 @@ body, html {
 
 /*Training Section(Services Page)*/
 .training-sect {
+  padding-top: 50px;
   padding-left: 50px;
+  padding-bottom: 50px;
+  background-color: lightgreen;
 }
 
 .training-sect-thumb1 {
   position: relative;
-  float: left;
 }
 
 .training-sect-thumb2 {
   position: relative;
-  top: 250px;
-  right: 160px;
 }
 
 .obedience {
@@ -218,7 +218,33 @@ body, html {
 .performance {
   position: relative;
 }
+
+.sched-button {
+  position: relative;
+  top: 20px;
+  left: 900px;
+}
+
 /*Grooming Section(Services Page)*/
 .grooming-sect {
-  padding-top: 300px;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-bottom: 50px;
+  background-color: lightblue;
+}
+
+.grooming-sect-thumb1 {
+  position: relative;
+}
+
+.grooming-sect-thumb2 {
+  position: relative;
+}
+
+/*Facility Section(Seervices Page)*/
+.facility-sect {
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-bottom: 50px;
+  background-color: lightpink;
 }
