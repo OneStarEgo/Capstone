@@ -140,6 +140,12 @@ body, html {
 }
 
 /*Services Page CSS*/
+.wrapper {
+  width: 100%;
+  height: 50%;
+  min-width: 960px;
+}
+
 .hero-image2 {
   background-image: linear-gradient(45deg,
   rgba(0, 0, 0, 0.5),
@@ -153,32 +159,66 @@ body, html {
   position: relative;
 }
 
-.training-img {
+.training-thumbnail {
   position: relative;
   top: 230px;
-  left: 150px;
+  right: 80px;
 }
 
 .training-link {
   position: relative;
+  left: 180px;
+  top: 60px;
 }
 
-.grooming-img {
+.grooming-thumbnail {
   position: relative;
   top: 230px;
-  left: 350px;
+  left: 140px;
 }
 
 .grooming-link {
   position: relative;
+  left: 490px;
+  top: 60px;
 }
 
-.facility-img {
+.facility-thumbnail {
   position: relative;
   top: 230px;
-  left: 550px;
+  left: 340px;
 }
 
 .facility-link {
   position: relative;
+  left: 770px;
+  top: 60px;
+}
+
+/*Training Section(Services Page)*/
+.training-sect {
+  padding-left: 50px;
+}
+
+.training-sect-thumb1 {
+  position: relative;
+  float: left;
+}
+
+.training-sect-thumb2 {
+  position: relative;
+  top: 250px;
+  right: 160px;
+}
+
+.obedience {
+  position: relative;
+}
+
+.performance {
+  position: relative;
+}
+/*Grooming Section(Services Page)*/
+.grooming-sect {
+  padding-top: 300px;
 }
