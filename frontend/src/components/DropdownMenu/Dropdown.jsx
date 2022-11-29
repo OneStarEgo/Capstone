@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 
 import "./Dropdown.css";
 
@@ -36,4 +36,4 @@ const Dropdown = ({ placeHolder }) => {
   );
 };
 
-export default Dropdown;
+export default Dropdown;*/

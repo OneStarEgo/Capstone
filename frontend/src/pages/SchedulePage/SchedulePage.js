@@ -1,8 +1,29 @@
-import React, { useContext } from "react";
+/*import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import Dropdown from "../../components/DropdownMenu/Dropdown";
+
+
 const SchedulePage = () => {
+    function Menu() {
+        const options = [
+            {value: "green", label: "Green"},
+            {value: "blue", label: "Blue"},
+            {value: "red", label: "Red"},
+            {value: "yellow", label: "Yellow"},
+            {value: "orange", label: "Orange"},
+            {value: "pink", label: "Pink"},
+            {value: "purple", label: "Purple"},
+            {value: "grey", label: "Grey"},
+        ];
+
+        return (
+            <div className="Menu">
+                <Dropdown placeHolder="Select..." options={options} />
+            </div>
+        )
+    };
+
   const { registerDog } = useContext(AuthContext);
   const defaultValues = {
     temperament: "",
@@ -16,9 +37,6 @@ const SchedulePage = () => {
 
 return (
     <div className="container">
-        <div className="dog-breed">
-            <Dropdown placeHolder="Select..." />
-        </div>
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Temperament:{" "}
@@ -57,4 +75,4 @@ return (
 
 
 
-export default SchedulePage;
+export default SchedulePage;*/
