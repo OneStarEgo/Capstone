@@ -21,7 +21,7 @@ const HomePage = () => {
         <div className="a-padding">
             <h2 className="sect-title-a">Mission Statement</h2>
             <p className="paragraph-1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              From the beginning our number one priority has always been to have the best behaving dogs out there.
               Volutpat odio facilisis mauris sit.
               Et odio pellentesque diam volutpat commodo.
               Feugiat in fermentum posuere urna nec tincidunt praesent semper.
