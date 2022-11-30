@@ -73,7 +73,7 @@ body, html {
   rgba(0, 0, 0, 0.5),
   rgba(0, 0, 0, 0.5)),
   url("https://www.shutterstock.com/image-photo/australian-shepherd-attentive-260nw-740843314.jpg");
-  height: 400px;
+  height: 25rem;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -103,33 +103,33 @@ body, html {
 
 .about-us {
   background-color: #00539cff;
-  padding: 50px;
+  padding: 3.125rem;
   width: 100%;
 }
 
 .sect-title-a {
   position: relative;
-  left: 110px;
+  left: 6.875rem;
   color: white;
   
 }
 
 .sect-title-b {
   position: relative;
-  bottom: 35px;
-  right: -140px;
+  bottom: 2.188rem;
+  right: -8.75rem;
   color: white;
 }
 
 .a-padding {
-  padding-left: 100px;
-  padding-right: 90px;
+  padding-left: 6.25rem;
+  padding-right: 5.625rem;
 }
 
 .paragraph-1 {
   float: left;
   width: 50%;
-  padding: 30px;
+  padding: 1.875rem;
   flex-wrap: wrap;
   color: white;
 }
@@ -137,17 +137,21 @@ body, html {
 .paragraph-2 {
   flex-wrap: wrap;
   position: relative;
-  bottom: 17px;
+  bottom: 1.063rem;
   color: white;
-  padding: 10px;
-  left: 20px;
+  padding: 0.625rem;
+  left: 1.25rem;
 }
 
 /*Services Page CSS*/
+.servicespage {
+  width: 100%;
+}
+
 .wrapper {
   width: 100%;
   height: 50%;
-  min-width: 960px;
+  min-width: 60rem;
 }
 
 .hero-image2 {
@@ -155,7 +159,7 @@ body, html {
   rgba(0, 0, 0, 0.5),
   rgba(0, 0, 0, 0.5)),
   url("https://images.pexels.com/photos/264005/pexels-photo-264005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-  height: 400px;
+  height: 25rem;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -165,45 +169,45 @@ body, html {
 
 .training-thumbnail {
   position: relative;
-  top: 230px;
-  right: 80px;
+  top: 14.375rem;
+  right: 5rem;
 }
 
 .training-link {
   position: relative;
-  left: 180px;
-  top: 60px;
+  left: 11.25rem;
+  top: 3.75rem;
 }
 
 .grooming-thumbnail {
   position: relative;
-  top: 230px;
-  left: 140px;
+  top: 14.375rem;
+  left: 8.75rem;
 }
 
 .grooming-link {
   position: relative;
-  left: 490px;
-  top: 60px;
+  left: 30.625rem;
+  top: 3.75rem;
 }
 
 .facility-thumbnail {
   position: relative;
-  top: 230px;
-  left: 340px;
+  top: 14.375rem;
+  left: 21.25rem;
 }
 
 .facility-link {
   position: relative;
-  left: 770px;
-  top: 60px;
+  left: 48.125rem;
+  top: 3.75rem;
 }
 
 /*Training Section(Services Page)*/
 .training-sect {
-  padding-top: 50px;
-  padding-left: 50px;
-  padding-bottom: 50px;
+  padding-top: 3.125rem;
+  padding-left: 3.125rem;
+  padding-bottom: 3.125rem;
   background-color: #fffdd0;
 }
 
@@ -224,16 +228,26 @@ body, html {
 }
 
 .sched-button {
+  top: 2.5rem;
+  left: 56.25rem;
   position: relative;
-  top: 20px;
-  left: 900px;
+}
+
+.button-styling {
+  background-color: transparent;
+  border: 0.125rem solid #eea47fff;
+  color: #eea47fff;
+  font-size: 1rem;
+  font-family: inherit;
+  max-width: 6.25rem;
+  padding: 0.5rem 0.5rem;
 }
 
 /*Grooming Section(Services Page)*/
 .grooming-sect {
-  padding-top: 50px;
-  padding-left: 50px;
-  padding-bottom: 50px;
+  padding-top: 3.125rem;
+  padding-left: 3.125rem;
+  padding-bottom: 3.125rem;
   background-color: #fffdd0;
 }
 
@@ -247,8 +261,8 @@ body, html {
 
 /*Facility Section(Seervices Page)*/
 .facility-sect {
-  padding-top: 50px;
-  padding-left: 50px;
-  padding-bottom: 50px;
+  padding-top: 3.125rem;
+  padding-left: 3.125rem;
+  padding-bottom: 3.125rem;
   background-color: #fffdd0;
 }

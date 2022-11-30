@@ -31,7 +31,7 @@ const ServicesPage = () => {
                     </p>
                     <div>
                         <a className="sched-button" href="/schedule">
-                            <button>Schedule</button>
+                            <button className="button-styling">Schedule</button>
                         </a>
                     </div>
                 </div>
