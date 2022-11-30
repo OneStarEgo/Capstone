@@ -97,7 +97,7 @@ body, html {
 }
 
 .about-us {
-  background-color: indigo;
+  background-color: #00539cff;
 }
 
 .sect-title-a {
@@ -200,7 +200,7 @@ body, html {
   padding-top: 50px;
   padding-left: 50px;
   padding-bottom: 50px;
-  background-color: lightgreen;
+  background-color: #fffdd0;
 }
 
 .training-sect-thumb1 {
@@ -230,7 +230,7 @@ body, html {
   padding-top: 50px;
   padding-left: 50px;
   padding-bottom: 50px;
-  background-color: lightblue;
+  background-color: #fffdd0;
 }
 
 .grooming-sect-thumb1 {
@@ -246,5 +246,5 @@ body, html {
   padding-top: 50px;
   padding-left: 50px;
   padding-bottom: 50px;
-  background-color: lightpink;
+  background-color: #fffdd0;
 }

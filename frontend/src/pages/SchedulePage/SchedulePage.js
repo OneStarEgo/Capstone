@@ -1,4 +1,4 @@
-/*import React, { useContext } from "react";
+import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import Dropdown from "../../components/DropdownMenu/Dropdown";
@@ -18,7 +18,7 @@ const SchedulePage = () => {
         ];
 
         return (
-            <div className="Menu">
+            <div className="">
                 <Dropdown placeHolder="Select..." options={options} />
             </div>
         )
@@ -75,4 +75,4 @@ return (
 
 
 
-export default SchedulePage;*/
+export default SchedulePage;

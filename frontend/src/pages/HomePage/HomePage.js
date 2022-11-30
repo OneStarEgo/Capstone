@@ -7,10 +7,13 @@ const HomePage = () => {
         <div className='hero-text1'>
           <h1>Elite Dog Training</h1>
           <div className="au">
-            <a href="about-us">About Us</a>
+            <a href="/services"> Services </a>
           </div>
           <div className="cu">
-            <a href="contact-us">Contact Info</a>
+            <a href="/schedule"> Schedule Appointment </a>
+          </div>
+          <div className="cu">
+            <a href="/status">Pet Status</a>
           </div>
         </div>
       </div>
@@ -49,9 +52,6 @@ const HomePage = () => {
           Ante in nibh mauris cursus.
           Aliquet porttitor lacus luctus accumsan tortor posuere ac.</p>
         </div>
-      </div>
-      <div className="contact-us">
-        <h2 className="sect-title-c">Contact Us</h2>
       </div>
     </div>
   );
