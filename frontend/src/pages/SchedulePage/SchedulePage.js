@@ -4,6 +4,7 @@ import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import Dropdown from "../../components/DropdownMenu/Dropdown";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import CheckBox from "../../components/CheckBox/CheckBox";
 
 
 const SchedulePage = () => {
@@ -46,42 +47,24 @@ const SchedulePage = () => {
     setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
   }, []);
 
+  const [choice, choices] = useState("")
+  const [preferences, setPreferences] = useState( { "obedience training": false, "performance training": false, "protection training": false} )
+
+  function togglePreference(service) {
+    preferences[service] = !preferences[service];
+
+    let newChoices = "";
+    for ( var service in preferences ) {
+
+      if (preferences[service] ) {
+
+        newChoices += service + " ";
+      }
+    }
+  }
+
 return (
     <div className="container">
-      <div className="">
-        <Dropdown isMulti placeHolder="Dog Breed/Breeds..." options={options} setDogBreeds={setDogBreeds} />
-      </div>
-      <form className="form" onSubmit={handleSubmit}>
-        <label>
-          Temperament:{" "}
-          <input
-            type="text"
-            name="temperament"
-            value={formData.temperament}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Name:{" "}
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Age:{" "}
-          <input
-            type="text"
-            name="age"
-            value={formData.age}
-            onChange={handleInputChange}
-          />
-        </label>
-        
-        <button>Register Dog!</button>
-      </form>
       <div className="user-info-box" onSubmit={handleSubmit}>
         <label className="f-name">
           First Name: {""}
@@ -124,8 +107,65 @@ return (
           />
         </label>
       </div>
+      <div className="">
+        <Dropdown isMulti placeHolder="Dog Breed/Breeds..." options={options} setDogBreeds={setDogBreeds} />
+      </div>
+      <form className="form" onSubmit={handleSubmit}>
+        <label>
+          Temperament:{" "}
+          <input
+            type="text"
+            name="temperament"
+            value={formData.temperament}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Name:{" "}
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Age:{" "}
+          <input
+            type="text"
+            name="age"
+            value={formData.age}
+            onChange={handleInputChange}
+          />
+        </label>
+        
+      </form>
       <div className="progress-bar">
           <ProgressBar bgcolor={"#00539cff"} completed={completed} />
+      </div>
+      <button>Register Dog!</button>
+      <h2 className="services-sect">Training/Grooming</h2>
+      <div className="">
+        <CheckBox 
+        onText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."
+        offText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."
+        togglePreference={togglePreference}
+        service="obedience training"
+        />
+        <CheckBox
+        onText="Performance Training is all about mastering the obstacle course but it's also a fun way to stimulate and tire out your dog as a hobby."
+        offText="Performance Training is all about mastering the obstacle course but it's also a fun way to stimulate and tire out your dog as a hobby."
+        togglePreference={togglePreference}
+        service="performance training"
+        />
+        <CheckBox
+        onText="Protection Training teaches your dog to be fearless, confident, controlled, and they should be naturally suspicious of strangers for your protection."
+        offText="Protection Training teaches your dog to be fearless, confident, controlled, and they should be naturally suspicious of strangers for your protection."
+        togglePreference={togglePreference}
+        service="protection training"
+        />
+
+        <h1> You have chosen {choice} </h1>
       </div>
     </div>
   );
