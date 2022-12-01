@@ -63,6 +63,7 @@ const Dropdown = (props, isMulti) => {
       newValue = option;
     }
     setSelectedValue(newValue);
+    props.setSelectedValue(newValue);
   };
 
   const isSelected = (option) => {
