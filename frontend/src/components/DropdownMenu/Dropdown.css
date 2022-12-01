@@ -17,6 +17,30 @@
   position: absolute;
   transform: translateY(4px);
   width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 0.063 solid #ccc;
+  border-radius: 0.313rem;
+}
+
+.dropdown-item.selected {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.dropdown-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.313rem;
+}
+
+.dropdown-tags-item {
+  background-color: #ddd;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-tags-close {
+  display: flex;
+  align-items: center;
 }
