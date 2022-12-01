@@ -3,14 +3,11 @@ import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import Dropdown from "../../components/DropdownMenu/Dropdown";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
 
 
 const SchedulePage = () => {
   const [dogBreeds, setDogBreeds] = useState([]);
-
-  
-  
-  
   
   const options = [
     {value: "green", label: "Green"},
@@ -22,7 +19,7 @@ const SchedulePage = () => {
     {value: "purple", label: "Purple"},
     {value: "grey", label: "Grey"},
   ];
-  
+
   async function dog_list() {
     const response = await axios.get("https://dog.ceo/api/breeds/list/all");
     setDogBreeds(response.data)
@@ -42,6 +39,12 @@ const SchedulePage = () => {
     defaultValues,
     registerDog
   );
+
+  const [completed, setCompleted] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
+  }, []);
 
 return (
     <div className="container">
@@ -79,8 +82,8 @@ return (
         
         <button>Register Dog!</button>
       </form>
-      <div className="user-info-form" onSubmit={handleSubmit}>
-        <label>
+      <div className="user-info-box" onSubmit={handleSubmit}>
+        <label className="f-name">
           First Name: {""}
           <input
           type= "text"
@@ -88,7 +91,7 @@ return (
           value={formData.firstName}
           />
         </label>
-        <label>
+        <label className="l-name">
           Last Name: {""}
           <input
           type= "text"
@@ -107,10 +110,8 @@ return (
         <label>
           Zip Code: {""}
           <input
-          type= "number"
+          type= "text"
           name= "zip_code"
-          min="1"
-          max="5"
           value={formData.zip_code}
           />
         </label>
@@ -122,7 +123,9 @@ return (
           value={formData.first_name}
           />
         </label>
-
+      </div>
+      <div className="progress-bar">
+          <ProgressBar bgcolor={"#00539cff"} completed={completed} />
       </div>
     </div>
   );

@@ -266,3 +266,11 @@ body, html {
   padding-bottom: 3.125rem;
   background-color: #fffdd0;
 }
+
+/*Schedule Page*/
+
+
+.progress-bar {
+  position: relative;
+  right: 3.125rem;
+}

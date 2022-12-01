@@ -63,7 +63,7 @@ const Dropdown = (props, isMulti) => {
       newValue = option;
     }
     setSelectedValue(newValue);
-    props.setSelectedValue(newValue);
+    props.setDogBreeds(newValue);
   };
 
   const isSelected = (option) => {
