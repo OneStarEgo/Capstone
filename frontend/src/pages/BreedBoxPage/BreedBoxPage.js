@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Rate from '../../components/RatingBar/Rating';
 
 
 
@@ -33,6 +34,7 @@ const BreedBoxPage = () => {
         <div>
             <button onClick={()=> {getDogList()}}>Just Push Me</button>
             <button onClick={()=> {getComments()}}>Ahhhhhh</button>
+            <Rate />
         </div>
     )
 }
