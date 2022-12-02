@@ -125,7 +125,7 @@ return (
         <label>
           Age:{" "}
           <input
-            type="text"
+            type="number"
             name="age"
             value={formData.age}
             onChange={handleInputChange}
