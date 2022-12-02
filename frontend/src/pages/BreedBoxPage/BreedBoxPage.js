@@ -1,8 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 
 
-const BreedBox = () => {
+const BreedBoxPage = () => {
     return (
-        <div></div>
+        <div><h1>Hello</h1></div>
     )
 }
+
+export default BreedBoxPage;

@@ -3,7 +3,6 @@ import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import Dropdown from "../../components/DropdownMenu/Dropdown";
-import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import CheckBox from "../../components/CheckBox/CheckBox";
 
 
@@ -40,12 +39,6 @@ const SchedulePage = () => {
     defaultValues,
     registerDog
   );
-
-  const [completed, setCompleted] = useState(0);
-
-  useEffect(() => {
-    setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
-  }, []);
 
   const [choice, choices] = useState("")
   const [preferences, setPreferences] = useState( { "obedience training": false, "performance training": false, "protection training": false} )
@@ -138,11 +131,7 @@ return (
             onChange={handleInputChange}
           />
         </label>
-        
       </form>
-      <div className="progress-bar">
-          <ProgressBar bgcolor={"#00539cff"} completed={completed} />
-      </div>
       <button>Register Dog!</button>
       <h2 className="services-sect">Training/Grooming</h2>
       <div className="">

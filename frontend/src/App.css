@@ -268,11 +268,15 @@ body, html {
 }
 
 /*Schedule Page*/
-.progress-bar {
-  position: relative;
-  right: 3.125rem;
+.services-sect {
+  padding: 3.125rem;
 }
 
-.services-sect {
+/*Status Page*/
+.progress-bar {
+  padding: 3.125rem;
+}
+
+.calendar-container {
   padding: 3.125rem;
 }
