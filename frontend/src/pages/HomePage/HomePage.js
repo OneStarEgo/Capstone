@@ -15,6 +15,9 @@ const HomePage = () => {
           <div className="cu">
             <a href="/status">Pet Status</a>
           </div>
+          <div className="cu">
+            <a href="/breedbox">BreedBox</a>
+          </div>
         </div>
       </div>
       <div className="about-us">

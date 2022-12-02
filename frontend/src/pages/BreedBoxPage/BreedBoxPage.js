@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import axios from 'axios';
 import Rate from '../../components/RatingBar/Rating';
 
