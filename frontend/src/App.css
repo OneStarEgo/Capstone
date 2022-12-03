@@ -268,9 +268,55 @@ body, html {
 }
 
 /*Schedule Page*/
+.f-name-container {
+  padding: 10px;
+}
+
+.f-name {
+  position: relative;
+}
+
+.l-name-container {
+  padding: 10px;
+}
+
+.l-name {
+  margin-bottom: 10px;
+}
+
+.address-container {
+  padding: 10px;
+}
+
+.address {
+  position: relative;
+  left: 10px;
+}
+
+.zip-container {
+  padding: 10px;
+  position: relative;
+}
+
+.zip-code {
+  position: relative;
+  left: 6px;
+}
+
+.email-container {
+  padding: 10px;
+  position: relative;
+}
+
+.email {
+  position: relative;
+  right: 15px;
+}
+
 .services-sect {
   padding: 3.125rem;
 }
+
 
 /*Status Page*/
 .progress-bar {

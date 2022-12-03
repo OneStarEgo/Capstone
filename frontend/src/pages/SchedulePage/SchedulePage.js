@@ -2,35 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
-import Dropdown from "../../components/DropdownMenu/Dropdown";
 import CheckBox from "../../components/CheckBox/CheckBox";
+import { useParams } from "react-router-dom";
 
-
+/*(Dropdown Menu)
+<Dropdown isMulti placeHolder="Dog Breed/Breeds..." options={options} setDogBreeds={setDogBreeds} />
+*/
 const SchedulePage = () => {
-  const [dogBreeds, setDogBreeds] = useState([]);
   
-  const options = [
-    {value: "green", label: "Green"},
-    {value: "blue", label: "Blue"},
-    {value: "red", label: "Red"},
-    {value: "yellow", label: "Yellow"},
-    {value: "orange", label: "Orange"},
-    {value: "pink", label: "Pink"},
-    {value: "purple", label: "Purple"},
-    {value: "grey", label: "Grey"},
-  ];
-
-  async function dog_list() {
-    const response = await axios.get("https://dog.ceo/api/breeds/list/all");
-    setDogBreeds(response.data)
-  }
-  
-  useEffect(() => {
-    dog_list();
-  }, []);
 
   const { registerDog } = useContext(AuthContext);
   const defaultValues = {
+    breed: "",
     temperament: "",
     name: "",
     age: "",
@@ -54,56 +37,34 @@ const SchedulePage = () => {
         newChoices += service + " ";
       }
     }
+    choices(newChoices);
   }
+  
+  const[newDog, setNewDog] = useState([]);
+  const {id, user_id} = useParams();
+
+  const postNewDog = async()=>{
+    try{
+        let response = await axios.post(`http://127.0.0.1:8000/api/pet/${id}/`)
+        setNewDog(response.data.items)
+    }catch(error){
+        console.log(error.response.data)
+    };
+}
 
 return (
-    <div className="container">
-      <div className="user-info-box" onSubmit={handleSubmit}>
-        <label className="f-name">
-          First Name: {""}
-          <input
-          type= "text"
-          name= "firstName"
-          value={formData.firstName}
-          />
-        </label>
-        <label className="l-name">
-          Last Name: {""}
-          <input
-          type= "text"
-          name= "lastName"
-          value={formData.lastName}
-          />
-        </label>
-        <label>
-          Address: {""}
-          <input
-          type= "text"
-          name= "address"
-          value={formData.address}
-          />
-        </label>
-        <label>
-          Zip Code: {""}
-          <input
-          type= "text"
-          name= "zip_code"
-          value={formData.zip_code}
-          />
-        </label>
-        <label>
-          Email Address: {""}
-          <input
-          type= "text"
-          name= "first_name"
-          value={formData.first_name}
-          />
-        </label>
-      </div>
-      <div className="">
-        <Dropdown isMulti placeHolder="Dog Breed/Breeds..." options={options} setDogBreeds={setDogBreeds} />
-      </div>
+  <div className="container">
       <form className="form" onSubmit={handleSubmit}>
+          <h2>Dog Info</h2>
+        <label>
+          Breed:{" "}
+          <input
+          type="text"
+          name="breed"
+          value={formData.breed}
+          onChange={handleInputChange}
+          />
+        </label>
         <label>
           Temperament:{" "}
           <input
@@ -132,10 +93,9 @@ return (
           />
         </label>
       </form>
-      <button>Register Dog!</button>
+      <button onClick={() => {postNewDog()}}>Register Dog!</button>
       <h2 className="services-sect">Training/Grooming</h2>
-      <div className="">
-        <CheckBox 
+        <CheckBox
         onText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."
         offText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."
         togglePreference={togglePreference}
@@ -153,10 +113,8 @@ return (
         togglePreference={togglePreference}
         service="protection training"
         />
-
         <h1> You have chosen {choice} </h1>
-      </div>
-    </div>
+  </div>
   );
 };
 

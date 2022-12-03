@@ -24,7 +24,7 @@ const HomePage = () => {
         <div className="a-padding">
             <h2 className="sect-title-a">Mission Statement</h2>
             <p className="paragraph-1">
-              From the beginning our number one priority has always been to have the best behaving dogs out there.
+              From the beginning our number one priority has always been to have the best behaved dogs out there.
               Volutpat odio facilisis mauris sit.
               Et odio pellentesque diam volutpat commodo.
               Feugiat in fermentum posuere urna nec tincidunt praesent semper.
@@ -39,7 +39,8 @@ const HomePage = () => {
               Amet mauris commodo quis imperdiet.
             </p>
           <h2 className="sect-title-b">Facility Info</h2>
-          <p className="paragraph-2">Nunc pulvinar sapien et ligula ullamcorper malesuada. 
+          <p className="paragraph-2">
+          Our facilities are top of the line. 
           Suscipit adipiscing bibendum est ultricies integer quis auctor elit.
           Elementum nisi quis eleifend quam. Maecenas accumsan lacus vel facilisis.
           Congue quisque egestas diam in arcu.

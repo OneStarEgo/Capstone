@@ -32,7 +32,7 @@ const Footer = () => {
           <input type="email" name="user_email" />
           <label>Message</label>
           <textarea name="message" />
-          <input type="submit" value="Send" />
+          <input type="submit" value="Send" onClick={() => {alert("Email Sent")}} />
         </form>
       </div>
       <p>Copyright © 2022</p>{" "}

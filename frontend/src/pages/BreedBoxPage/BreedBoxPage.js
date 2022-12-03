@@ -32,8 +32,8 @@ const BreedBoxPage = () => {
 
     return (
         <div>
-            <button onClick={()=> {getDogList()}}>Just Push Me</button>
-            <button onClick={()=> {getComments()}}>Ahhhhhh</button>
+            <button onClick={()=> {getDogList()}}>Dogs</button>
+            <button onClick={()=> {getComments()}}>User Comments</button>
             <Rate />
         </div>
     )
