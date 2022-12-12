@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 
 const StatusPage = () => {
@@ -11,12 +13,28 @@ const StatusPage = () => {
     useEffect(() => {
         setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
     }, []);
+
+    const [user,token] = useAuth();
+    const [userDog, setUserDog] = useState([]);
+
+    const getOwnersDog = async () => {
+        try {
+          let response = await axios.get(`http://127.0.0.1:8000/api/pet/${user.username}/`, {
+            headers: {
+              Authorization: " Bearer " + token, 
+            },
+          });
+          setUserDog(response.data.items)
+        } catch (error) {
+          console.log(error.response.data)
+        }
+      };
     
     
     return (
         <div className="statuspage">
-            <div><h1>Hello UserName</h1></div>
-            <div><h2>Dogs Progress</h2></div>
+            <div><h1>Hello {user.username}</h1></div>
+            <div><h2>{userDog.pet.name} Progress</h2></div>
             <div className="progress-bar">
                 <ProgressBar bgcolor={"#00539cff"} completed={completed} />
             </div>

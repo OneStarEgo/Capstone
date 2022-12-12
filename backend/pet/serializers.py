@@ -6,4 +6,4 @@ from .models import Pet;
 class PetSerializer(serializers.ModelSerializer):
     class Meta:
         model= Pet
-        fields = ('owner', 'breed', 'name', 'age', 'temperament')
+        fields = ('user', 'breed', 'name', 'age', 'temperament')
