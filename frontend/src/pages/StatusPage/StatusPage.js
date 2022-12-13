@@ -34,7 +34,7 @@ const StatusPage = () => {
     return (
         <div className="statuspage">
             <div><h1>Hello {user.username}</h1></div>
-            <div><h2>{userDog.pet.name} Progress</h2></div>
+            <div><h2>{} Progress</h2></div>
             <div className="progress-bar">
                 <ProgressBar bgcolor={"#00539cff"} completed={completed} />
             </div>

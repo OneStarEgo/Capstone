@@ -171,6 +171,8 @@ body, html {
   position: relative;
   top: 14.375rem;
   right: 5rem;
+  height: auto;
+  max-width: 100%;
 }
 
 .training-link {
@@ -183,6 +185,8 @@ body, html {
   position: relative;
   top: 14.375rem;
   left: 8.75rem;
+  height: auto;
+  max-width: 100%;
 }
 
 .grooming-link {
@@ -195,6 +199,8 @@ body, html {
   position: relative;
   top: 14.375rem;
   left: 21.25rem;
+  height: auto;
+  max-width: 100%;
 }
 
 .facility-link {
@@ -213,10 +219,14 @@ body, html {
 
 .training-sect-thumb1 {
   position: relative;
+  max-width: 100%;
+  height: auto;
 }
 
 .training-sect-thumb2 {
   position: relative;
+  max-width: 100%;
+  height: auto;
 }
 
 .obedience {
@@ -253,10 +263,14 @@ body, html {
 
 .grooming-sect-thumb1 {
   position: relative;
+  max-width: 100%;
+  height: auto;
 }
 
 .grooming-sect-thumb2 {
   position: relative;
+  max-width: 100%;
+  height: auto;
 }
 
 /*Facility Section(Seervices Page)*/

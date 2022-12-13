@@ -124,7 +124,27 @@ const SchedulePage = () => {
           togglePreference={togglePreference}
           service="protection training"
           />
-          <h1> You have chosen {choice} </h1>
+          <h2> You have chosen {choice} </h2>
+          <br />
+          <h2>Grooming Options</h2>
+          <CheckBox
+          onText="Coat Trimming"
+          offText="Coat Trimming"
+          togglePreference={togglePreference}
+          service="coat trimming"
+          />
+          <CheckBox
+          onText="Coat Styling"
+          offText="Coat Styling"
+          togglePreference={togglePreference}
+          service="coat styling"
+          />
+          <CheckBox
+          onText="Full Service"
+          offText="Full Service"
+          togglePreference={togglePreference}
+          service="full service"
+          />
     </div>
   );
 };
