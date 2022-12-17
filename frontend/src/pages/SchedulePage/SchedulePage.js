@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
-import useCustomForm from "../../hooks/useCustomForm";
 import CheckBox from "../../components/CheckBox/CheckBox";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -20,10 +19,6 @@ const SchedulePage = () => {
     name: "",
     age: "",
   };
-  const [formData, handleInputChange, handleSubmit] = useCustomForm(
-    defaultValues,
-    registerDog
-  );
 
   const [choice, choices] = useState("")
   const [preferences, setPreferences] = useState( { "obedience training": false, "performance training": false, "protection training": false} )
@@ -43,12 +38,16 @@ const SchedulePage = () => {
   }
   
   const [user, token] = useAuth();
-  const[newDog, setNewDog] = useState([]);
   const {id, user_id} = useParams();
+  const[age, setAge] = useState([]);
+  const[breed, setBreed] = useState([]);
+  const[name, setName] = useState([]);
+  const[temperament, setTemperament] = useState([]);
+  const[newDog, setNewDog] = useState([]);
 
-  const postNewDog = async () => {
+  const postNewDog = async (newPet) => {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/pet/${id}/`, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/pet/`, newPet, {
         headers: {
           Authorization: " Bearer " + token, 
         },
@@ -58,6 +57,19 @@ const SchedulePage = () => {
       console.log(error.response.data)
     }
   };
+
+  function handleSubmit(event){
+    event.preventDefault();
+    let newPet = {
+      user: user.id,
+      breed: breed,
+      temperament: temperament,
+      name: name,
+      age: age
+    };
+    postNewDog(newPet)
+    console.log("Pet Registered!")
+  }
 
   return (
     <div className="container">
@@ -72,8 +84,8 @@ const SchedulePage = () => {
             <input
             type="text"
             name="breed"
-            value={formData.breed}
-            onChange={handleInputChange}
+            value={breed}
+            onChange={(event) => setBreed(event.target.value)}
             />
           </label>
           <label>
@@ -81,8 +93,8 @@ const SchedulePage = () => {
             <input
               type="text"
               name="temperament"
-              value={formData.temperament}
-              onChange={handleInputChange}
+              value={temperament}
+              onChange={(event) => setTemperament(event.target.value)}
             />
           </label>
           <label>
@@ -90,8 +102,8 @@ const SchedulePage = () => {
             <input
               type="text"
               name="name"
-              value={formData.name}
-              onChange={handleInputChange}
+              value={name}
+              onChange={(event) => setName(event.target.value)}
             />
           </label>
           <label>
@@ -99,12 +111,13 @@ const SchedulePage = () => {
             <input
               type="number"
               name="age"
-              value={formData.age}
-              onChange={handleInputChange}
+              value={age}
+              onChange={(event) => setAge(event.target.value)}
             />
           </label>
+          <button type="submit">Register Dog!</button>
         </form>
-        <button onClick={() => {postNewDog()}}>Register Dog!</button>
+
         <h2 className="services-sect">Training/Grooming</h2>
           <CheckBox
           onText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."

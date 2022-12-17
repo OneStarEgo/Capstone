@@ -7,3 +7,4 @@ class PetSerializer(serializers.ModelSerializer):
     class Meta:
         model= Pet
         fields = ('user', 'breed', 'name', 'age', 'temperament')
+        depth = 1

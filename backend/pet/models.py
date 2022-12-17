@@ -8,3 +8,6 @@ class Pet(models.Model):
     name= models.CharField(max_length=255)
     age= models.IntegerField()
     temperament= models.CharField(max_length=255)
+    wants_coat_trimming = models.BooleanField(default=False)
+    wants_coat_styling = models.BooleanField(default=False)
+    wants_full_service = models.BooleanField(default=False)
