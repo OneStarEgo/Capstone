@@ -8,12 +8,13 @@ const Footer = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm("contact_service", "contact_form", form.current, "BM8fgM1vbQEdond4E")
+    emailjs.sendForm("contact_service", "contact_form", e.target, "BM8fgM1vbQEdond4E")
       .then((result) => {
         console.log(result.text);
       }, (error) => {
         console.log(error.text)
       });
+      e.target.reset()
   };
 
   return (
@@ -27,12 +28,14 @@ const Footer = () => {
       <div>
         <form ref={form} onSubmit={sendEmail}>
           <label>Name</label>
-          <input type="text" name="user_name" />
-          <label>Email</label>
-          <input type="email" name="user_email" />
+          <input type="text" placeholder="Name" name="name" />
+          <label>Email Address</label>
+          <input type="email" placeholder="Email Address" name="user_email" />
+          <label>Subject</label>
+          <input type='text' placeholder="Subject" name="subject"/>
           <label>Message</label>
-          <textarea name="message" />
-          <input type="submit" value="Send" onClick={() => {alert("Email Sent")}} />
+          <textarea id="" cols="30" rows="8" placeholder="Your message" name="message"></textarea>
+          <input type="submit" value="Send Message" onClick={() => {alert("Email Sent")}} />
         </form>
       </div>
       <p>Copyright © 2022</p>{" "}
