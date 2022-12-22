@@ -4,6 +4,8 @@ import AuthContext from "../../context/AuthContext";
 import CheckBox from "../../components/CheckBox/CheckBox";
 import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import emailjs from "@emailjs/browser";
+
 
 
 /*(Dropdown Menu)
@@ -38,7 +40,7 @@ const SchedulePage = () => {
   }
   
   const [user, token] = useAuth();
-  const {id, user_id} = useParams();
+  const {userid, setUserId} = useParams();
   const[age, setAge] = useState([]);
   const[breed, setBreed] = useState([]);
   const[name, setName] = useState([]);
@@ -47,7 +49,7 @@ const SchedulePage = () => {
 
   const postNewDog = async (newPet) => {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/pet/`, newPet, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/pet/${userid}/`, newPet, {
         headers: {
           Authorization: " Bearer " + token, 
         },
@@ -57,6 +59,18 @@ const SchedulePage = () => {
       console.log(error.response.data)
     }
   };
+
+  function confirmationEmail(e){
+    e.preventDefault();
+
+    emailjs.confirmationForm("contact_service", "contact_form", e.target, "BM8fgM1vbQEdond4E")
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text)
+      }) 
+      e.target.reset()
+  }
 
   function handleSubmit(event){
     event.preventDefault();
@@ -115,7 +129,7 @@ const SchedulePage = () => {
               onChange={(event) => setAge(event.target.value)}
             />
           </label>
-          <button type="submit">Register Dog!</button>
+          <button type="submit" onClick={confirmationEmail}>Register Dog!</button>
         </form>
 
         <h2 className="services-sect">Training/Grooming</h2>
