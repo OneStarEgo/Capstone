@@ -40,7 +40,7 @@ const SchedulePage = () => {
   }
   
   const [user, token] = useAuth();
-  const {userid, setUserId} = useParams();
+  const {id, setUserId} = useParams();
   const[age, setAge] = useState([]);
   const[breed, setBreed] = useState([]);
   const[name, setName] = useState([]);
@@ -49,7 +49,7 @@ const SchedulePage = () => {
 
   const postNewDog = async (newPet) => {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/pet/${userid}/`, newPet, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/pet/${id}/`, newPet, {
         headers: {
           Authorization: " Bearer " + token, 
         },

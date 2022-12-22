@@ -27,7 +27,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/services" element={<ServicesPage />} />
-        <Route path="/schedule/:userid/" element={<PrivateRoute><SchedulePage /></PrivateRoute>} />
+        <Route path="/schedule/:id/" element={<PrivateRoute><SchedulePage /></PrivateRoute>} />
         <Route path="/status" element={<PrivateRoute><StatusPage /></PrivateRoute>} />
         <Route path="/breedbox" element={<PrivateRoute><BreedBoxPage /></PrivateRoute>} />
       </Routes>
