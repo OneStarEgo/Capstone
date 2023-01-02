@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 function CheckBox(props) {
 
-    const [checked, setChecked] = useState(false)
+    const [checked, setChecked] = useState(false);
     const checkedText = props.onText;
     const uncheckedText = props.offText;
     const togglePreference = props.togglePreference;

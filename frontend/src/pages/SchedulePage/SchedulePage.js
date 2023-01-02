@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import CheckBox from "../../components/CheckBox/CheckBox";
@@ -14,13 +14,7 @@ import emailjs from "@emailjs/browser";
 const SchedulePage = () => {
   
 
-  const { registerDog } = useContext(AuthContext);
-  const defaultValues = {
-    breed: "",
-    temperament: "",
-    name: "",
-    age: "",
-  };
+  
 
   const [choice, choices] = useState("")
   const [preferences, setPreferences] = useState( { "obedience training": false, "performance training": false, "protection training": false} )
@@ -40,7 +34,7 @@ const SchedulePage = () => {
   }
   
   const [user, token] = useAuth();
-  const {id, setUserId} = useParams();
+  const {user_id, setUserId} = useParams();
   const[age, setAge] = useState([]);
   const[breed, setBreed] = useState([]);
   const[name, setName] = useState([]);
@@ -49,7 +43,7 @@ const SchedulePage = () => {
 
   const postNewDog = async (newPet) => {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/pet/${id}/`, newPet, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/pet/`, newPet, {
         headers: {
           Authorization: " Bearer " + token, 
         },
@@ -60,10 +54,12 @@ const SchedulePage = () => {
     }
   };
 
-  function confirmationEmail(e){
+  const form = useRef();
+
+  const confirmationEmail = (e) => {
     e.preventDefault();
 
-    emailjs.confirmationForm("contact_service", "contact_form", e.target, "BM8fgM1vbQEdond4E")
+    emailjs.confirmationForm("contact_service", "contact_form", form.current, "BM8fgM1vbQEdond4E")
       .then((result) => {
         console.log(result.text);
       }, (error) => {
@@ -88,7 +84,7 @@ const SchedulePage = () => {
   return (
     <div className="container">
       <h1>Hello {user.username}</h1>
-        <form className="form" onSubmit={handleSubmit}>
+        <form ref={form} className="form" onSubmit={handleSubmit}>
           <h2>Dog Info</h2>
           <label>
             Owner Name:{user.first_name} 
@@ -129,7 +125,7 @@ const SchedulePage = () => {
               onChange={(event) => setAge(event.target.value)}
             />
           </label>
-          <button type="submit" onClick={confirmationEmail}>Register Dog!</button>
+          <button type="submit" >Register Dog!</button>
         </form>
 
         <h2 className="services-sect">Training/Grooming</h2>
