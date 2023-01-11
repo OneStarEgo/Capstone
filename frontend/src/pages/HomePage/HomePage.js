@@ -1,6 +1,8 @@
 import React from "react";
+import useAuth from "../../hooks/useAuth";
 
 const HomePage = () => {
+  const [user, token] = useAuth();
   return (
     <div className='homepage'>
       <div className="hero-image1">
@@ -10,7 +12,7 @@ const HomePage = () => {
             <a href="/services"> Services </a>
           </div>
           <div className="cu">
-            <a href="/schedule"> Schedule Appointment </a>
+            <a href={'/schedule/'+user.id}> Schedule Appointment </a>
           </div>
           <div className="cu">
             <a href="/status">Pet Status</a>

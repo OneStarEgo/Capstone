@@ -14,7 +14,9 @@ import emailjs from "@emailjs/browser";
 const SchedulePage = () => {
   
 
-  
+  var cors=require('cors')
+
+  app.use(cors())
 
   const [choice, choices] = useState("")
   const [preferences, setPreferences] = useState( { "obedience training": false, "performance training": false, "protection training": false} )
@@ -43,7 +45,7 @@ const SchedulePage = () => {
 
   const postNewDog = async (newPet) => {
     try {
-      let response = await axios.post(`http://127.0.0.1:8000/api/pet/`, newPet, {
+      let response = await axios.post(`http://127.0.0.1:8000/api/pet/${user_id}`, newPet, {
         headers: {
           Authorization: " Bearer " + token, 
         },
@@ -71,7 +73,7 @@ const SchedulePage = () => {
   function handleSubmit(event){
     event.preventDefault();
     let newPet = {
-      user: user.id,
+      user_id: user.id,
       breed: breed,
       temperament: temperament,
       name: name,
