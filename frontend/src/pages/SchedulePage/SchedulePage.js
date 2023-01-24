@@ -125,7 +125,7 @@ const SchedulePage = () => {
           </label>
           <button type="submit" >Register Dog!</button>
         </form>
-
+        
         <h2 className="services-sect">Training/Grooming</h2>
           <CheckBox
           onText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."
