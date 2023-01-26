@@ -6,8 +6,8 @@ import BreedBoxComments from '../../components/BreedBox/BreedBoxComments';
 
 
 const BreedBoxPage = (props) => {
-    const [dogs, setDogs] = useState('');
-    const [comments, setComments] = useState('');
+    const [dog, setDogs] = useState('');
+    const [comment, setComments] = useState('');
     //const [post, setPost] = useState('');
     //const [name, setName] = useState('');
     
@@ -32,7 +32,7 @@ const BreedBoxPage = (props) => {
 
     return (
         <div>
-            <BreedBoxComments/>
+            <BreedBoxComments />
             <Rate />
                 <div>
                     <button onClick={()=> {getDogList()}}>Dogs</button>
