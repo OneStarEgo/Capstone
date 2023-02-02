@@ -1,45 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Rate from '../../components/RatingBar/Rating';
-import BreedBoxComments from '../../components/BreedBox/BreedBoxComments';
-
-
 
 const BreedBoxPage = (props) => {
-    const [dog, setDogs] = useState('');
-    const [comment, setComments] = useState('');
-    //const [post, setPost] = useState('');
-    //const [name, setName] = useState('');
-    
-    
-    const getDogList = async()=>{
-        try{
-            let response = await axios.get("http://127.0.0.1:8000/api/pet")
-            setDogs(response.data.items)
-        }catch(error){
+    const [dogName, setDogName] = useState([]);
+    const [breed, setBreed] = useState([]);
+    const [comment, setComments] = useState([])
+
+
+    const postNewComment = async (newComment) => {
+        try {
+            let response = await axios.post('http://127.0.0.1:8000/api/comments/', newComment);
+            setComments(response.data.items)
+        } catch (error) {
             console.log(error.response.data)
+        }
+    };
+
+
+    const form = useRef();
+    
+    function handleSubmit(event){
+        event.preventDefault()
+        let newComment = {
+            dog : dogName,
+            breed : breed,
+            comment : comment,
         };
+        postNewComment(newComment)
+        console.log('Comment Posted')
     }
 
-    const getComments = async()=>{
-        try{
-            let response = await axios.post("http://127.0.0.1:8000/api/comments/")
-            setComments(response.data.items)
-        }catch(error){
-            console.log(error.response.data)
-        };
+    const handleChange = (e) => {
+        setComments(e.currentTarget.value)
     }
 
     return (
         <div>
-            <BreedBoxComments />
+            <br />
+            <h1> Breed Box Comments </h1>
+            <hr />
+            <form ref={form}  style={{display: 'flex'}} onSubmit={handleSubmit}>
+                <input type='text'
+                    name='text'
+                    style={{width: '100%', borderRadius: '5px'}}
+                    defaultValue=''
+                    placeholder="write comment here"
+                    onChange={handleChange}
+                />
+                <br />
+                <button style={{width: '20%', height: '52px'}}>Submit</button>
+            </form>
             <Rate />
-                <div>
-                    <button onClick={()=> {getDogList()}}>Dogs</button>
-                    <button onClick={()=> {getComments()}}>User Comments</button>
-                    
-                </div>
         </div>
-    )
+    );
 }
 export default BreedBoxPage;
