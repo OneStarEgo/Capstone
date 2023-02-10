@@ -11,32 +11,19 @@ import emailjs from "@emailjs/browser";
 <Dropdown isMulti placeHolder="Dog Breed/Breeds..." options={options} setDogBreeds={setDogBreeds} />
 */
 const SchedulePage = () => {
-  
 
-  const [choice, choices] = useState("")
-  const [preferences, setPreferences] = useState( { "obedience training": false, "performance training": false, "protection training": false} )
-
-  function togglePreference(service) {
-    preferences[service] = !preferences[service];
-
-    let newChoices = "";
-    for ( var service in preferences ) {
-
-      if (preferences[service] ) {
-
-        newChoices += service + " ";
-      }
-    }
-    choices(newChoices);
-  }
-  
   const [user, token] = useAuth();
-  const {user_id, setUserId} = useParams();
   const[age, setAge] = useState([]);
   const[breed, setBreed] = useState([]);
   const[name, setName] = useState([]);
   const[temperament, setTemperament] = useState([]);
   const[newDog, setNewDog] = useState([]);
+  const[wants_coat_trimming, setCoatTrimming] = useState(true);
+  const[wants_coat_styling, setCoatStyling] = useState(true);
+  const[wants_full_service, setFullService] = useState(true);
+  const[wants_obedience_training, setObedienceTraining] = useState(true);
+  const[wants_performance_training, setPerformanceTraining] = useState(true);
+  const[wants_protection_training, setProtectionTraining] = useState(true);
 
   const postNewDog = async (newPet) => {
     try {
@@ -52,7 +39,7 @@ const SchedulePage = () => {
   };
 
   const form = useRef();
-
+  
   const confirmationEmail = (e) => {
     e.preventDefault();
 
@@ -63,6 +50,51 @@ const SchedulePage = () => {
         console.log(error.text)
       }) 
       e.target.reset()
+  }
+
+  const handleChange = (choice)=>{
+    if(choice==="trimming")
+    {
+      if(wants_coat_trimming===true){
+        console.log(choice,"")
+      }
+      setCoatTrimming(!wants_coat_trimming)
+    }
+    if(choice==="styling")
+    {
+      if(wants_coat_styling===true){
+        console.log(choice,"")
+      }
+      setCoatStyling(!wants_coat_styling)
+    }
+    if(choice==="full service")
+    {
+      if(wants_full_service===true){
+        console.log(choice,"")
+      }
+      setFullService(!wants_full_service)
+    }
+    if(choice==="obedience")
+    {
+      if(wants_obedience_training===true){
+        console.log(choice,"")
+      }
+      setObedienceTraining(!wants_obedience_training)
+    }
+    if(choice==="performance")
+    {
+      if(wants_performance_training===true){
+        console.log(choice,"")
+      }
+      setPerformanceTraining(!wants_performance_training)
+    }
+    if(choice==="protection")
+    {
+      if(wants_protection_training===true){
+        console.log(choice,"")
+      }
+      setProtectionTraining(!wants_protection_training)
+    }
   }
 
   function handleSubmit(event){
@@ -122,49 +154,16 @@ const SchedulePage = () => {
               onChange={(event) => setAge(event.target.value)}
             />
           </label>
-          <button type="submit" >Register Dog!</button>
         </form>
+        <button type="submit" onClick={confirmationEmail} >Register Dog!</button>
         
-        <h2 className="services-sect">Training/Grooming</h2>
-          <CheckBox
-          onText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."
-          offText="Obedience Training will teach your dog respect. They will learn who is their leader, and what their place is. All dogs should be able to respond to a few basic commands like stay or come. Listening to their owner is not only good for their behavior, but it is also good for their safety."
-          togglePreference={togglePreference}
-          service="obedience training"
-          />
-          <CheckBox
-          onText="Performance Training is all about mastering the obstacle course but it's also a fun way to stimulate and tire out your dog as a hobby."
-          offText="Performance Training is all about mastering the obstacle course but it's also a fun way to stimulate and tire out your dog as a hobby."
-          togglePreference={togglePreference}
-          service="performance training"
-          />
-          <CheckBox
-          onText="Protection Training teaches your dog to be fearless, confident, controlled, and they should be naturally suspicious of strangers for your protection."
-          offText="Protection Training teaches your dog to be fearless, confident, controlled, and they should be naturally suspicious of strangers for your protection."
-          togglePreference={togglePreference}
-          service="protection training"
-          />
-          <h2> You have chosen {choice} </h2>
-          <br />
-          <h2>Grooming Options</h2>
-          <CheckBox
-          onText="Coat Trimming"
-          offText="Coat Trimming"
-          togglePreference={togglePreference}
-          service="coat trimming"
-          />
-          <CheckBox
-          onText="Coat Styling"
-          offText="Coat Styling"
-          togglePreference={togglePreference}
-          service="coat styling"
-          />
-          <CheckBox
-          onText="Full Service"
-          offText="Full Service"
-          togglePreference={togglePreference}
-          service="full service"
-          />
+      <h2 className="services-sect">Training/Grooming</h2>
+        <input type="checkbox" value={wants_obedience_training} onChange={()=>handleChange("obedience")} /> Obedience Training
+        <input type="checkbox" value={wants_performance_training} onChange={()=>handleChange("performance")} /> Performance Training
+        <input type="checkbox" value={wants_protection_training} onChange={()=>handleChange("protection")} /> Protection Training
+        <input type="checkbox" value={wants_coat_trimming} onChange={()=>handleChange("trimming")} /> Coat Trimming
+        <input type="checkbox" value={wants_coat_styling} onChange={()=>handleChange("styling")} /> Coat Styling
+        <input type="checkbox" value={wants_full_service} onChange={()=>handleChange("full service")} /> Full Service
     </div>
   );
 };

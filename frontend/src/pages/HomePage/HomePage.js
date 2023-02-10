@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 
 const HomePage = () => {
   const [user, token] = useAuth();
+   
   return (
     <div className='homepage'>
       <div className="hero-image1">

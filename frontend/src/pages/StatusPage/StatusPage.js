@@ -16,6 +16,8 @@ const StatusPage = () => {
 
     const [user,token] = useAuth();
     const [userDog, setUserDog] = useState([]);
+    const [appointment, setAppointment] = useState([]);
+    const [dogStatus, setDogStatus] = useState([]);
 
     const getOwnersDog = async () => {
         try {

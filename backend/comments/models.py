@@ -5,5 +5,5 @@ from authentication.models import User;
 class Comment(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     breed= models.CharField(max_length=255)
-    dogName= models.CharField(max_length=255)
-    text= models.CharField(max_length=255)
+    dog_name= models.CharField(max_length=255)
+    comment= models.CharField(max_length=255)
