@@ -43,13 +43,12 @@ const SchedulePage = () => {
   const confirmationEmail = (e) => {
     e.preventDefault();
 
-    emailjs.confirmationForm("contact_service", "contact_form", form.current, "BM8fgM1vbQEdond4E")
+    emailjs.sendForm("contact_service", "contact_form", form.current, "BM8fgM1vbQEdond4E")
       .then((result) => {
         console.log(result.text);
       }, (error) => {
         console.log(error.text)
       }) 
-      e.target.reset()
   }
 
   const handleChange = (choice)=>{
