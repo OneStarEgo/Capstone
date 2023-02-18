@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Rate from '../../components/RatingBar/Rating';
 import useAuth from '../../hooks/useAuth';
@@ -7,10 +7,11 @@ const BreedBoxPage = (props) => {
     const [dogName, setDogName] = useState("");
     const [breed, setBreed] = useState([]);
     const [comment, setComments] = useState("");
+    const [commentsList, setCommentsList] = useState([]);
     const [user, token] = useAuth();
 
-    const HandleSubmit = async (event) => {
-        event.preventDefault()
+    const HandleSubmit = async (e) => {
+        e.preventDefault()
         let newComment = {
             email : user.email,
             username : user.username,
@@ -29,6 +30,7 @@ const BreedBoxPage = (props) => {
                 }
             );
             console.log("Comment posted", response.data.items);
+            setCommentsList(prevState => ({ ...prevState, [e.target.name]: e.target.value}));
         } catch (error) {
             console.log(error.response.data);
         }
@@ -37,6 +39,19 @@ const BreedBoxPage = (props) => {
     const HandleChange = (e) => {
         setComments(e.currentTarget.value)
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                let response = await axios.get("http://127.0.0.1:8000/api/comments/");
+                setCommentsList(response.data.items);
+            } catch (error) {
+                console.log(error.response.data);
+            }
+        };
+
+        fetchData();
+    }, [])
 
     return (
         <div>

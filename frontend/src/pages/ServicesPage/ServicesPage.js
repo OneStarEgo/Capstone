@@ -1,7 +1,10 @@
 import React from "react";
+import useAuth from "../../hooks/useAuth";
 
 
 const ServicesPage = () => {
+    const [user, token] = useAuth();
+
     return (
         <div className="servicespage">
             <div id="wrapper">
@@ -30,7 +33,7 @@ const ServicesPage = () => {
                         Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget.
                     </p>
                     <div>
-                        <a className="sched-button" href="/schedule">
+                        <a className="sched-button" href={"/schedule/"+user.id}>
                             <button className="button-styling">Schedule</button>
                         </a>
                     </div>

@@ -6,6 +6,6 @@ from .models import Pet;
 class PetSerializer(serializers.ModelSerializer):
     class Meta:
         model= Pet
-        fields = ('id', 'breed', 'name', 'age', 'temperament', 'user_id')
+        fields = ('id', 'breed', 'name', 'age', 'temperament', 'user_id', 'owner_name')
         depth = 1
     user_id = serializers.IntegerField(write_only=True)

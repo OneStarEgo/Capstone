@@ -7,62 +7,109 @@ import axios from "axios";
 
 
 const StatusPage = () => {
-    const [date, setDate] = useState(new Date());
-    const [completed, setCompleted] = useState(0);
+  const [date, setDate] = useState(new Date());
+  const [selectedPet, setSelectedPet] = useState(null);
+  const [setUserDogs] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  
+  const [user,token] = useAuth();
 
-    useEffect(() => {
-        setInterval(() => setCompleted(Math.floor(Math.random() * 100) + 1), 2000);
-    }, []);
-
-    const [user,token] = useAuth();
-    const [userDog, setUserDog] = useState([]);
-    const [appointment, setAppointment] = useState([]);
-    const [dogStatus, setDogStatus] = useState([]);
-
+  useEffect(() => {
     const getOwnersDog = async () => {
         try {
-          let response = await axios.get(`http://127.0.0.1:8000/api/pet/${user.username}/`, {
+          let response = await axios.get(`http://127.0.0.1:8000/api/pet/${user.id}/`, {
             headers: {
-              Authorization: " Bearer " + token, 
+              Authorization: "Bearer " + token, 
             },
           });
-          setUserDog(response.data.items)
+          if (response.data) {
+            setUserDogs(response.data.items)
+          } else {
+            console.log("response data is undefined");
+          }
         } catch (error) {
           console.log(error.response.data)
         }
       };
-    
-    
-    return (
-        <div className="statuspage">
-            <div><h1>Hello {user.username}</h1></div>
-            <div><h2>{} Progress</h2></div>
-            <div className="progress-bar">
-                <ProgressBar bgcolor={"#00539cff"} completed={completed} />
-            </div>
-            <h1 className="header">Dog Calendar</h1>
-            <div className="calendar-container">
-                <Calendar
-                 onChange={setDate}
-                 value={date}
-                 selectRange={true}
-                />
-            </div>
-            {date.length > 0 ? (
-             <p className="text-center">
-                <span claasName="bold">Training Start:</span>{" "}
-                {date[0].toDateString()}
-                &nbsp;|&nbsp;
-                <span className="bold">Training End:</span> {date[1].toDateString()}
-            </p>
-            ) : (
-            <p className="text-center">
-                <span className="bold">Default selected date:</span>{" "}
-                {date.toDateString()}
-            </p>
-            )}
-        </div>
-    );
+      getOwnersDog();
+  }, [user.id, token, setUserDogs]);
+
+  const getPetAppointments = async (petId) => {
+    try {
+      let response = await axios.get(`http://127.0.0.1:8000/api/appointment/${petId}/`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setAppointments(response.data.items)
+    } catch (error) {
+      console.log(error.response.data)
+    }
+  };
+
+  const isAppointmentDate = (date) => {
+    return appointments.some((appointment) => {
+      return appointment.date.toDateString() === date.toDateString();
+    });
+  };
+
+  const handleSelectPet = (pet) => {
+    setSelectedPet(pet);
+    getPetAppointments(pet.id);
+    setStartDate(pet.startDate);
+    setEndDate(pet.endDate)
+  };
+
+  const tileContent = ({ date, view }) => {
+    if(view === "month" && isAppointmentDate(date)) {
+      return <div style={{ backgroundColor: "red", height: "100%"}} />;
+    }
+    return null;
+  };
+
+  const handleClickDay = (date) => {
+    const foundAppointment = appointments.find((appointment) => {
+      return appointment.date.toDateString() === date.toDateString();
+    });
+
+    if (foundAppointment) {
+
+    }
+  };
+
+  let completed = 0;
+  if(selectedPet) {
+    completed = selectedPet.completed;
+  }
+  
+  
+  return (
+  <div className="statuspage">
+    <div>
+      <h1>Hello {user.username}</h1>
+      <div>
+        {setUserDogs.map((pet) => (
+          <div key={pet.id} onClick={() => handleSelectPet(pet)}>
+            {pet.name}
+          </div>
+        ))}
+      </div>
+    </div>
+    <div>
+      {selectedPet && (
+        <ProgressBar completed={completed} startDate={startDate} endDate={endDate} />
+      )}
+      <Calendar
+      value={date}
+      onChange={setDate}
+      tileContent={tileContent}
+      onClickDay={handleClickDay}
+      />
+    </div>
+  </div>
+  );
 };
 
 
