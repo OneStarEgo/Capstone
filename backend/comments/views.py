@@ -1,18 +1,18 @@
-from rest_framework import status;
-from rest_framework.response import Response;
-from rest_framework.permissions import IsAuthenticated, AllowAny;
-from rest_framework.decorators import api_view, permission_classes;
-from .models import Comment;
-from .serializers import CommentSerializer;
-from django.shortcuts import get_list_or_404;
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.decorators import api_view, permission_classes
+from .models import Comment
+from .serializers import CommentSerializer
+from django.shortcuts import get_list_or_404
 
 
 # Create your views here.
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def employee_comments(request):
     if request.method == 'GET':
-        comments= get_list_or_404(Comment)
+        comments= Comment.objects.all()
         serializer= CommentSerializer(comments, many=True)
         return Response(serializer.data)
     elif request.method =='POST':

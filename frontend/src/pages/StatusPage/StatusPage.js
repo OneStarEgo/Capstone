@@ -5,11 +5,24 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
+/*<div className="pet-select-container">
+      <label htmlFor="pet-select">Select a pet:</label>
+      <select id="pet-select" value={selectedPet ? selectedPet.id : ""} onChange={(event) => {
+        const petId = event.target.value;
+        const pet = userDogs.find((dog) => dog.id === petId);
+        handleSelectPet(pet);
+      }}>
+        <option value="">Select a pet</option>
+        {userDogs.map((dog) => (
+          <option key={dog.id} value={dog.id}>{dog.name}</option>
+        ))}
+      </select>
+    </div>*/
 
 const StatusPage = () => {
   const [date, setDate] = useState(new Date());
   const [selectedPet, setSelectedPet] = useState(null);
-  const [setUserDogs] = useState([]);
+  const [userDogs, setUserDogs] = useState([]);
   const [appointments, setAppointments] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -30,11 +43,11 @@ const StatusPage = () => {
             console.log("response data is undefined");
           }
         } catch (error) {
-          console.log(error.response.data)
+          console.log(error.response)
         }
       };
       getOwnersDog();
-  }, [user.id, token, setUserDogs]);
+  }, [token, user.id, setUserDogs]);
 
   const getPetAppointments = async (petId) => {
     try {
@@ -87,19 +100,15 @@ const StatusPage = () => {
   
   return (
   <div className="statuspage">
-    <div>
-      <h1>Hello {user.username}</h1>
-      <div>
-        {setUserDogs.map((pet) => (
-          <div key={pet.id} onClick={() => handleSelectPet(pet)}>
-            {pet.name}
-          </div>
-        ))}
-      </div>
-    </div>
-    <div>
+    <h1 className="stat-h1">Hello {user.username}</h1>
+    <div className="calendar-container">
       {selectedPet && (
+        <>
         <ProgressBar completed={completed} startDate={startDate} endDate={endDate} />
+        <p>Dog progress: {completed}%</p>
+        <p>Enrollment date: {startDate.toDateString()}</p>
+        <p>Graduation date: {endDate.toDateString()}</p>
+        </>
       )}
       <Calendar
       value={date}

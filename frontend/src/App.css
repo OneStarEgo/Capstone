@@ -331,6 +331,27 @@ body, html {
   padding: 3.125rem;
 }
 
+.registration-form {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  width: 70%;
+}
+
+.sched-h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+.checkbox-label {
+  display: block;
+  margin: 10px 0;
+}
 
 /*Status Page*/
 .progress-bar {
@@ -339,4 +360,139 @@ body, html {
 
 .calendar-container {
   padding: 3.125rem;
+}
+
+.stat-h1 {
+  color: black;
+}
+
+/*BreedBox Page*/
+/* Center the BreedBoxPage container */
+.container {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+
+
+/* Style the heading */
+.breedbox-h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+/* Style the form */
+form {
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  width: 70%;
+}
+
+/* Style the form elements */
+input[type="text"],
+textarea {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  font-size: 1rem;
+  color: #666666;
+}
+
+button {
+  margin: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0066b3;
+}
+
+/* Style the comment box */
+
+.comment-sect {
+  background-size: cover;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 5px;
+}
+
+div.comment-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+div.comment-box label {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: black;
+}
+
+/* Style the rating component */
+.Rating {
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.5rem;
+  font-size: 2rem;
+  color: #ffa500;
+}
+
+div.star-ratings .Star {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+div.star-ratings .Star:last-child {
+  margin-right: 0;
+}
+
+/* Style the active stars */
+.Rating .Star.is-active:before {
+  content: "\2605";
+  color: #ffc107;
+}
+
+/* Style the inactive stars */
+.Rating .Star:before {
+  content: "\2606";
+}
+
+/* Style the submit button */
+button {
+  margin-top: 1.5rem;
+  padding: 10px;
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0066b3;
 }

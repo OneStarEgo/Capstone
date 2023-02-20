@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -11,11 +13,11 @@ import emailjs from "@emailjs/browser";
 const SchedulePage = () => {
 
   const [user, token] = useAuth();
-  const [ownerName, setOwnerName] = useState([])
-  const [age, setAge] = useState([]);
-  const [breed, setBreed] = useState([]);
+  const [ownerName, setOwnerName] = useState("")
+  const [age, setAge] = useState("");
+  const [breed, setBreed] = useState("");
   const [name, setName] = useState([]);
-  const [temperament, setTemperament] = useState([]);
+  const [temperament, setTemperament] = useState("");
   const [newDog, setNewDog] = useState([]);
   const [wantsCoatTrimming, setCoatTrimming] = useState(false);
   const [wantsCoatStyling, setCoatStyling] = useState(false);
@@ -27,8 +29,7 @@ const SchedulePage = () => {
   
   const form = useRef();
 
-  const handleRegistration = (event) => {
-    event.preventDefault();
+  const handleRegistration = () => {
     let newPet = {
       owner_name: ownerName,
       user_id: user.id,
@@ -44,18 +45,23 @@ const SchedulePage = () => {
       wants_protection_training: wantsProtectionTraining
     };
     postNewDog(newPet)
-    console.log("Pet Registered!")
-    setDogRegistered(true);
+      .then(() => {
+        toast.success('Dog registered!');
+        setDogRegistered(true);
+    })
+    .catch((error) => {
+      toast.error('Error registering dog: ' + error.message);
+    });
   };
 
   const postNewDog = async (newPet) => {
     try {
       let response = await axios.post('http://127.0.0.1:8000/api/pet/', newPet, {
         headers: {
-          Authorization: " Bearer " + token, 
+          Authorization: "Bearer " + token, 
         }
       });
-      setNewDog(response.data.items)
+      setNewDog(response.data)
     } catch (error) {
       console.log(error.response.data)
     }
@@ -108,8 +114,9 @@ const SchedulePage = () => {
 
   return (
     <div className="container">
-      <h1>Hello {user.username}</h1>
-        <form ref={form} className="form" onSubmit={handleRegistration}>
+      <ToastContainer />
+      <h1 className="sched-h1">Hello {user.username}</h1>
+        <form ref={form} className="registration-form" onSubmit={handleRegistration}>
           <h2>Dog Info</h2>
           <label>
             Owner Name:{" "}
@@ -150,7 +157,7 @@ const SchedulePage = () => {
           <label>
             Age:{" "}
             <input
-              type="number"
+              type="text"
               name="age"
               value={age}
               onChange={(event) => setAge(event.target.value)}
@@ -160,7 +167,7 @@ const SchedulePage = () => {
         </form>
         
       <h2 className="services-sect">Training/Grooming</h2>
-      <label>
+      <label className="checkbox-label">
         <input 
           type="checkbox"
           name="wants_obedience_training"
@@ -169,7 +176,7 @@ const SchedulePage = () => {
         />
         Obedience Training
       </label>
-      <label>
+      <label className="checkbox-label">
         <input
           type="checkbox"
           name="wants_performance_training"
@@ -178,15 +185,16 @@ const SchedulePage = () => {
         /> 
         Performance Training
       </label>
-      <label>
+      <label className="checkbox-label">
         <input 
         type="checkbox"
         name="wants_protection_training"
         checked={wantsProtectionTraining}
         onChange={handleCheckboxChange}
         />
+        Protection Training
       </label>
-      <label>
+      <label className="checkbox-label">
         <input
           type="checkbox"
           name="wants_coat_trimming"
@@ -195,7 +203,7 @@ const SchedulePage = () => {
         />
         Coat Trimming
       </label>
-      <label>
+      <label className="checkbox-label">
       <input
           type="checkbox"
           name="wants_coat_styling"
@@ -204,7 +212,7 @@ const SchedulePage = () => {
         />
         Coat Styling
       </label>
-      <label>
+      <label className="checkbox-label">
       <input
           type="checkbox"
           name="wants_full_service"
